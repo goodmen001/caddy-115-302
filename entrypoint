@@ -1,0 +1,13 @@
+#!/bin/sh
+# shellcheck shell=bash
+# shellcheck disable=SC2016
+
+if [ ! -d "/config" ]; then
+    mkdir -p /config
+fi
+
+if [ ! -f "/config/Caddyfile" ]; then
+    cp /app/Caddyfile_template /config/Caddyfile
+fi
+
+/app/caddy run --config /config/Caddyfile
